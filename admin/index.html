@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お知らせ管理 | kinukimama</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f4f2ef; color: #2e2e2e; min-height: 100vh; }
+    #app { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* HEADER */
+    .hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; border-bottom: 1px solid #d6d0c8; padding-bottom: 20px; }
+    .hd-title { font-size: 1.1rem; letter-spacing: 0.1em; color: #3a3a3a; }
+    .hd-sub { font-size: 0.72rem; color: #999; margin-top: 4px; letter-spacing: 0.05em; }
+
+    /* ERROR */
+    #error-view { text-align: center; padding: 80px 20px; }
+    #error-view h2 { font-size: 1rem; color: #c0392b; margin-bottom: 16px; }
+    #error-view p { font-size: 0.85rem; color: #666; line-height: 1.8; }
+    #error-view code { background: #eee; padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
+
+    /* LOADING */
+    #loading-view { text-align: center; padding: 80px 20px; color: #999; font-size: 0.85rem; }
+
+    /* ADD BUTTON */
+    .btn-add { display: inline-flex; align-items: center; gap: 6px; background: #4a7c59; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-size: 0.82rem; letter-spacing: 0.08em; cursor: pointer; transition: background 0.2s; }
+    .btn-add:hover { background: #3a6347; }
+
+    /* FORM CARD */
+    .form-card { background: #fff; border-radius: 8px; border: 1px solid #e0dbd3; padding: 28px; margin-bottom: 20px; }
+    .form-card-title { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #ede9e3; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.78rem; color: #555; margin-bottom: 6px; letter-spacing: 0.05em; }
+    .field input[type="text"],
+    .field input[type="date"],
+    .field select,
+    .field textarea { width: 100%; border: 1px solid #d4cec7; border-radius: 4px; padding: 9px 12px; font-size: 0.88rem; color: #2e2e2e; background: #faf9f7; outline: none; transition: border-color 0.2s; font-family: inherit; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #4a7c59; }
+    .field textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+    .field-hint { font-size: 0.72rem; color: #aaa; margin-top: 5px; }
+
+    /* BODY TOOLBAR */
+    .body-toolbar { display: flex; gap: 6px; margin-bottom: 6px; }
+    .toolbar-btn { background: #f0ede8; border: 1px solid #d4cec7; border-radius: 3px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; color: #555; transition: background 0.2s; }
+    .toolbar-btn:hover { background: #e4dfd8; }
+    .link-input-row { display: none; gap: 8px; margin-bottom: 6px; align-items: center; }
+    .link-input-row.visible { display: flex; }
+    .link-input-row input { flex: 1; border: 1px solid #d4cec7; border-radius: 4px; padding: 6px 10px; font-size: 0.82rem; outline: none; }
+    .link-input-row input:focus { border-color: #4a7c59; }
+    .link-input-row button { background: #4a7c59; color: #fff; border: none; border-radius: 4px; padding: 6px 14px; font-size: 0.78rem; cursor: pointer; white-space: nowrap; }
+    .link-input-row .cancel-btn { background: #999; }
+
+    /* FORM ACTIONS */
+    .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; padding-top: 18px; border-top: 1px solid #ede9e3; }
+    .btn-save { background: #4a7c59; color: #fff; border: none; padding: 10px 24px; border-radius: 4px; font-size: 0.82rem; cursor: pointer; letter-spacing: 0.06em; transition: background 0.2s; }
+    .btn-save:hover { background: #3a6347; }
+    .btn-save:disabled { background: #a0b8a8; cursor: not-allowed; }
+    .btn-cancel { background: transparent; color: #888; border: 1px solid #d4cec7; padding: 10px 20px; border-radius: 4px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; }
+    .btn-cancel:hover { background: #f0ede8; }
+
+    /* NEWS LIST */
+    .news-item { background: #fff; border-radius: 8px; border: 1px solid #e0dbd3; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
+    .news-item-body { flex: 1; min-width: 0; }
+    .news-item-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .news-date { font-size: 0.75rem; color: #999; }
+    .news-tag { font-size: 0.68rem; background: #e8f0ea; color: #4a7c59; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.05em; }
+    .news-title-text { font-size: 0.92rem; color: #2e2e2e; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .news-item-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .btn-edit { background: transparent; border: 1px solid #c8c2ba; color: #666; padding: 5px 14px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+    .btn-edit:hover { border-color: #4a7c59; color: #4a7c59; }
+    .btn-delete { background: transparent; border: 1px solid #e0a0a0; color: #c0392b; padding: 5px 14px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+    .btn-delete:hover { background: #fdf0f0; }
+
+    /* TOAST */
+    #toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); background: #2e2e2e; color: #fff; padding: 12px 24px; border-radius: 6px; font-size: 0.82rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
+    #toast.show { opacity: 1; }
+
+    /* EMPTY */
+    .empty { text-align: center; padding: 40px; color: #aaa; font-size: 0.85rem; }
+
+    .top-back {
+      display: block;
+      width: fit-content;
+      margin: 40px auto;
+      padding: 0.75rem 2.2rem;
+      border: 1px solid #7a9e7e;
+      color: #7a9e7e;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s;
+      text-align: center;
+    }      
+    .top-back:hover {
+      background: #7a9e7e;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="hd">
+    <div>
+      <div class="hd-title">kinukimama｜お知らせ管理</div>
+      <div class="hd-sub">news.json を編集します</div>
+    </div>
+    <button class="btn-add" id="btn-add" style="display:none" onclick="showAddForm()">＋ 新規追加</button>
+  </div>
+  <div id="loading-view">読み込み中...</div>
+  <div id="error-view" style="display:none"></div>
+  <div id="main-view" style="display:none">
+    <div id="form-area"></div>
+    <div id="list-area"></div>
+  </div>
+  <a href="https://kinukimama.com/index.html?skip=1" class="top-back">
+← トップへ戻る
+</a>
+</div>
+<div id="toast"></div>
+
+<script>
+const REPO = 'kinukimama/kinukimama';
+const FILE = 'news.json';
+const API  = 'https://api.github.com';
+
+let token = '';
+let fileSha = '';
+let items = [];
+let editingIndex = -1; // -1 = 新規
+
+// ── 初期化 ──────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.slice(1);
+  const params = new URLSearchParams(hash);
+  token = params.get('token') || '';
+
+  if (!token) {
+    showError(
+      'トークンが設定されていません',
+      `ブックマークのURLを確認してください。<br><br>
+       正しい形式：<br>
+       <code>https://kinukimama.com/admin/#token=取得したトークン</code>`
+    );
+    return;
+  }
+  loadData();
+});
+
+// ── データ取得 ────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await ghGet(`/repos/${REPO}/contents/${FILE}`);
+    if (!res.ok) throw new Error(`${res.status}`);
+    const json = await res.json();
+    fileSha = json.sha;
+    const decoded = JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g, '')))));
+    items = decoded.items || [];
+    renderList();
+    document.getElementById('loading-view').style.display = 'none';
+    document.getElementById('main-view').style.display = 'block';
+    document.getElementById('btn-add').style.display = 'inline-flex';
+  } catch(e) {
+    showError('データの取得に失敗しました', `エラー：${e.message}<br>トークンまたはリポジトリ設定を確認してください。`);
+  }
+}
+
+// ── リスト描画 ────────────────────────────────────
+function renderList() {
+  const area = document.getElementById('list-area');
+  const sorted = [...items].sort((a, b) => b.date.localeCompare(a.date));
+
+  if (sorted.length === 0) {
+    area.innerHTML = '<div class="empty">お知らせはまだありません。「新規追加」から追加してください。</div>';
+    return;
+  }
+
+  area.innerHTML = sorted.map(item => {
+    const idx = items.indexOf(item);
+    return `
+      <div class="news-item">
+        <div class="news-item-body">
+          <div class="news-item-meta">
+            <span class="news-date">${item.date}</span>
+            <span class="news-tag">${item.tag}</span>
+          </div>
+          <div class="news-title-text">${escHtml(item.title)}</div>
+        </div>
+        <div class="news-item-actions">
+          <button class="btn-edit" onclick="showEditForm(${idx})">編集</button>
+          <button class="btn-delete" onclick="deleteItem(${idx})">削除</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── フォーム表示（新規）────────────────────────────
+function showAddForm() {
+  editingIndex = -1;
+  renderForm(null);
+  document.getElementById('form-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── フォーム表示（編集）────────────────────────────
+function showEditForm(idx) {
+  editingIndex = idx;
+  renderForm(items[idx]);
+  document.getElementById('form-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── フォーム描画 ──────────────────────────────────
+function renderForm(item) {
+  const isNew = item === null;
+  const today = new Date().toISOString().slice(0, 10);
+  const v = item || { date: today, tag: 'お知らせ', title: '', body: '', link: '', linkText: '' };
+
+  document.getElementById('form-area').innerHTML = `
+    <div class="form-card">
+      <div class="form-card-title">${isNew ? '新規追加' : '編集'}</div>
+
+      <div class="field">
+        <label>日付</label>
+        <input type="date" id="f-date" value="${v.date}">
+      </div>
+
+      <div class="field">
+        <label>タグ</label>
+        <select id="f-tag">
+          ${['お知らせ','キャンペーン','休業','新メニュー','その他'].map(t =>
+            `<option value="${t}" ${v.tag===t?'selected':''}>${t}</option>`
+          ).join('')}
+        </select>
+      </div>
+
+      <div class="field">
+        <label>タイトル</label>
+        <input type="text" id="f-title" value="${escHtml(v.title)}" placeholder="タイトルを入力">
+      </div>
+
+      <div class="field">
+        <label>本文</label>
+        <div class="body-toolbar">
+          <button class="toolbar-btn" onclick="insertLink()">🔗 リンクを挿入</button>
+        </div>
+        <div class="link-input-row" id="link-row">
+          <input type="text" id="link-url-input" placeholder="https://example.com">
+          <button onclick="applyLink()">適用</button>
+          <button class="cancel-btn" onclick="hideLinkRow()">キャンセル</button>
+        </div>
+        <textarea id="f-body" placeholder="本文を入力">${escHtml(v.body)}</textarea>
+        <div class="field-hint">リンクを入れたいテキストを選択してから「リンクを挿入」を押してください</div>
+      </div>
+
+      <div class="field">
+        <label>リンクURL（任意）</label>
+        <input type="text" id="f-link" value="${escHtml(v.link||'')}" placeholder="https://example.com">
+      </div>
+
+      <div class="field">
+        <label>リンクテキスト（任意）</label>
+        <input type="text" id="f-linkText" value="${escHtml(v.linkText||'')}" placeholder="詳しくはこちら">
+        <div class="field-hint">リンクURLを入力した場合のみ有効です</div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-cancel" onclick="cancelForm()">キャンセル</button>
+        <button class="btn-save" id="btn-save" onclick="saveItem()">保存して公開</button>
+      </div>
+    </div>`;
+}
+
+// ── リンク挿入 ────────────────────────────────────
+function insertLink() {
+  document.getElementById('link-row').classList.add('visible');
+  document.getElementById('link-url-input').focus();
+}
+
+function hideLinkRow() {
+  document.getElementById('link-row').classList.remove('visible');
+  document.getElementById('link-url-input').value = '';
+}
+
+function applyLink() {
+  const url = document.getElementById('link-url-input').value.trim();
+  if (!url) return;
+  const ta = document.getElementById('f-body');
+  const start = ta.selectionStart;
+  const end = ta.selectionEnd;
+  const selected = ta.value.slice(start, end) || 'リンクテキスト';
+  const markdown = `[${selected}](${url})`;
+  ta.value = ta.value.slice(0, start) + markdown + ta.value.slice(end);
+  hideLinkRow();
+  ta.focus();
+}
+
+// ── 保存 ─────────────────────────────────────────
+async function saveItem() {
+  const date     = document.getElementById('f-date').value;
+  const tag      = document.getElementById('f-tag').value;
+  const title    = document.getElementById('f-title').value.trim();
+  const body     = document.getElementById('f-body').value.trim();
+  const link     = document.getElementById('f-link').value.trim();
+  const linkText = document.getElementById('f-linkText').value.trim();
+
+  if (!date || !title || !body) {
+    showToast('日付・タイトル・本文は必須です');
+    return;
+  }
+
+  const newItem = { date, tag, title, body };
+  if (link) { newItem.link = link; newItem.linkText = linkText || 'こちら'; }
+
+  if (editingIndex === -1) {
+    items.push(newItem);
+  } else {
+    items[editingIndex] = newItem;
+  }
+
+  await commitData();
+}
+
+// ── 削除 ─────────────────────────────────────────
+async function deleteItem(idx) {
+  if (!confirm(`「${items[idx].title}」を削除しますか？`)) return;
+  items.splice(idx, 1);
+  await commitData();
+}
+
+// ── GitHubにコミット ───────────────────────────────
+async function commitData() {
+  const btn = document.getElementById('btn-save');
+  if (btn) { btn.disabled = true; btn.textContent = '保存中...'; }
+
+  const content = btoa(unescape(encodeURIComponent(
+    JSON.stringify({ items }, null, 2)
+  )));
+
+  try {
+    const res = await ghPut(`/repos/${REPO}/contents/${FILE}`, {
+      message: 'Update news.json via admin',
+      content,
+      sha: fileSha
+    });
+    if (!res.ok) throw new Error(`${res.status}`);
+    const json = await res.json();
+    fileSha = json.content.sha;
+    cancelForm();
+    renderList();
+    showToast('保存しました');
+  } catch(e) {
+    showToast(`保存に失敗しました：${e.message}`);
+    if (btn) { btn.disabled = false; btn.textContent = '保存して公開'; }
+  }
+}
+
+// ── フォームを閉じる ───────────────────────────────
+function cancelForm() {
+  document.getElementById('form-area').innerHTML = '';
+  editingIndex = -1;
+}
+
+// ── GitHub API ────────────────────────────────────
+function ghGet(path) {
+  return fetch(API + path, {
+    headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
+  });
+}
+
+function ghPut(path, body) {
+  return fetch(API + path, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+}
+
+// ── ユーティリティ ────────────────────────────────
+function showError(title, msg) {
+  document.getElementById('loading-view').style.display = 'none';
+  const el = document.getElementById('error-view');
+  el.style.display = 'block';
+  el.innerHTML = `<h2>${title}</h2><p>${msg}</p>`;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2E3D34">
+  <title>Contact | kinukimama</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="canonical" href="https://kinukimama.com/contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Hina+Mincho&family=Shippori+Mincho+B1:wght@400;500&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9M1DLZXFLX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9M1DLZXFLX');
+  </script>
+</head>
+
+<body class="is-subpage">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html?skip=1" class="logo">
+    <span class="logo-img-wrap">
+      <img class="logo-white" src="images/img_png_001.png" alt="kinukimama">
+      <img class="logo-green" src="images/img_png_green.png" alt="kinukimama">
+    </span>
+    <span class="logo-text-wrap">
+      <img class="logo-txt-white" src="images/logo_kk_white.png" alt="kinukimama">
+      <img class="logo-txt-green" src="images/logo_kk_green.png" alt="kinukimama">
+    </span>
+  </a>
+    <button class="burger" id="burger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <ul class="drawer-links">
+    <li><a href="index.html?skip=1#concept"><span class="link-en">Concept</span><span class="link-ja">コンセプト</span></a></li>
+    <li><a href="index.html?skip=1#menu"><span class="link-en">Menu</span><span class="link-ja">施術メニュー</span></a></li>
+    <li><a href="index.html?skip=1#flow"><span class="link-en">Flow</span><span class="link-ja">施術の流れ</span></a></li>
+    <li><a href="index.html?skip=1#about"><span class="link-en">About</span><span class="link-ja">サロンについて</span></a></li>
+    <li><a href="shop.html"><span class="link-en">Kinumoyou</span><span class="link-ja">きぬもよふ</span></a></li>
+    <li><a href="index.html?skip=1#access"><span class="link-en">Access</span><span class="link-ja">アクセス</span></a></li>
+    <li><a href="contact.html"><span class="link-en">Contact</span><span class="link-ja">お問い合わせ</span></a></li>
+  </ul>
+  <div class="drawer-cta-wrap">
+    <a href="index.html?skip=1#contact" class="drawer-cta">
+      <span class="cta-ja">ご予約はこちら</span>
+      <span class="drawer-cta-circle">
+        <span class="drawer-cta-circle-bar"></span>
+      </span>
+    </a>
+  </div>
+</div>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<!-- PAGE HERO -->
+<div class="page-hero page-hero--contact">
+  <div class="ph-eyebrow">
+    <div class="ph-line"></div>
+    <span>Inquiry · Contact</span>
+  </div>
+  <h1 class="ph-h1">お問い合わせ</h1>
+  <p class="ph-sub">Contact Form</p>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html?skip=1">Home</a>
+  <span class="sep">›</span>
+  <span class="current">Contact</span>
+</div>
+
+<!-- FORM -->
+<main>
+  <div class="cf-wrap">
+
+    <form action="https://formspree.io/f/xykngynd" method="POST" id="cf-form">
+
+      <!-- お問い合わせ項目 -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-type">お問い合わせ項目<span class="cf-req">*</span></label>
+        <select class="cf-select" id="cf-type" name="問い合わせ項目" required>
+          <option value="" disabled selected>選択してください</option>
+          <option>ご予約について</option>
+          <option>施術メニューについて</option>
+          <option>商品について</option>
+          <option>その他</option>
+        </select>
+      </div>
+
+      <!-- お名前 -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-name">お名前<span class="cf-req">*</span></label>
+        <input class="cf-input" type="text" id="cf-name" name="お名前" placeholder="" required>
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-email">メールアドレス<span class="cf-req">*</span></label>
+        <input class="cf-input" type="email" id="cf-email" name="メールアドレス" placeholder="" required>
+        <span class="cf-err" id="cf-email-err"></span>
+      </div>
+
+      <!-- 電話番号 -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-tel">電話番号（ハイフンなし半角）<span class="cf-req">*</span><span class="cf-tel-note">※携帯番号とのどちらか必須</span></label>
+        <input class="cf-input" type="tel" id="cf-tel" name="電話番号" placeholder="0312345678" maxlength="11" inputmode="numeric">
+        <span class="cf-err" id="cf-tel-err"></span>
+      </div>
+
+      <!-- 携帯番号 -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-mobile">携帯番号（ハイフンなし半角）<span class="cf-req">*</span><span class="cf-tel-note">※電話番号との どちらか必須</span></label>
+        <input class="cf-input" type="tel" id="cf-mobile" name="携帯番号" placeholder="09012345678" maxlength="11" inputmode="numeric">
+        <span class="cf-err" id="cf-mobile-err"></span>
+      </div>
+
+      <!-- お問い合わせ内容 -->
+      <div class="cf-field">
+        <label class="cf-label" for="cf-message">お問い合わせ内容<span class="cf-req">*</span></label>
+        <textarea class="cf-textarea" id="cf-message" name="お問い合わせ内容" required></textarea>
+      </div>
+      
+      <!-- ハニーポット（ボット対策・ユーザーには非表示） -->
+      <div style="display:none;" aria-hidden="true">
+        <input type="text" name="_honeypot" id="cf-honeypot" tabindex="-1" autocomplete="off">
+      </div>  
+
+      <p class="cf-captcha-note">このフォームはスパム対策により保護されています。<br>送信内容を確認の上、ご返信いたします。 <br>（返信までに数日お時間をいただく場合がございます）</p>
+
+      <div class="cf-submit">
+        <button type="button" class="btn-submit" id="cf-submit-btn">送信</button>
+      </div>
+
+    </form>
+
+    <div class="back-wrap">
+      <a href="index.html?skip=1" class="back-btn"><span class="back-btn-arrow">←</span>トップへ戻る</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="index.html?skip=1" class="f-logo">
+      <img src="images/img_png_001.png" alt="" style="width:44px;height:44px;object-fit:contain;">
+      <img src="images/logo_kk_gold.png" alt="kinukimama" style="height:24px;width:auto;object-fit:contain;">
+    </a>
+    <span class="f-sub">キヌキママ 自由が丘</span>
+    <p class="f-tag">絹に宿る癒しの力で、<br>あなたを解き放つ。<br><br>気まま、に。力まず、自分らしく。</p>
+  </div>
+  <div class="f-nav">
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="index.html?skip=1#concept">コンセプト</a></li>
+      <li><a href="index.html?skip=1#menu">施術メニュー</a></li>
+      <li><a href="index.html?skip=1#flow">施術の流れ</a></li>
+      <li><a href="index.html?skip=1#about">サロンについて</a></li>
+      <li><a href="shop.html">オンラインショップ</a></li>
+      <li><a href="index.html?skip=1#access">アクセス</a></li>
+      <li><a href="news.html">お知らせ</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <div class="f-info">
+    <h4>Information</h4>
+    <p>東京都世田谷区奥沢５-20-10<br>テラス自由が丘 205号室<br><br>自由が丘駅南口より徒歩3分<br><br>営業時間 11:00〜20:00<br>完全予約制・女性専用</p>
+  </div>
+</footer>
+<div class="footer-btm">
+  <span>© 2026 kinukimama. All Rights Reserved.</span>
+  <a href="privacy.html" class="footer-legal">Privacy Policy · Terms of Use</a>
+  <span>Silk Sericin Relaxation — Jiyugaoka, Tokyo</span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
