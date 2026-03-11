@@ -21,7 +21,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;}
 a{text-decoration:none;}
 
 /* ── LOADER ── */
-.loader{position:fixed;inset:0;z-index:9999;background:var(--sage);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity 0.8s ease 0.4s,visibility 0.8s ease 0.4s;}
+.loader{position:fixed;inset:0;z-index:9999;background:var(--sage);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity 1s ease 0.4s,visibility 1s ease 0.4s;}
 .loader.gone{opacity:0;visibility:hidden;}
 .skip-loader .loader{display:none;}
 .loader-logo{width:clamp(168px,26.4vmin,240px);height:clamp(168px,26.4vmin,240px);opacity:0;animation:loaderIn 1s ease 0.1s forwards;}
