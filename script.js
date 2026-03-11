@@ -260,6 +260,7 @@ if (newsBanner) {
       requestAnimationFrame(() => {
         const hero = document.querySelector('.hero');
         if (hero) {
+          hero.style.minHeight = 'unset';
           hero.style.height = `${window.innerHeight - newsBanner.offsetHeight}px`;
         }
       });
