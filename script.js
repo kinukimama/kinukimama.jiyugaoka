@@ -1,4 +1,4 @@
-window.addEventListener('load',()=>{
+window.addEventListener('DOMContentLoaded',()=>{
   const loader = document.getElementById('loader');
   if(!loader) return;
   const skip = new URLSearchParams(location.search).get('skip');
