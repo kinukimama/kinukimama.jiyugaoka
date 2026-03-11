@@ -372,8 +372,12 @@ footer{background:#141E17;padding:5vmin 5vw;display:grid;grid-template-columns:1
   .ab-card{position:relative;right:auto;bottom:auto;max-width:100%;margin:0;display:block;padding-top:1.8rem;padding-bottom:1.8rem;text-align:center;}
   .ab-card-q{margin-bottom:0;font-size:0.9rem;}
   .shop{justify-content:center;align-items:flex-end;min-height:480px;}
-  .shop-overlay{background:linear-gradient(to bottom,transparent 30%,rgba(247,244,239,0.85) 60%,rgba(247,244,239,0.97) 100%);}
+  .shop-overlay{background:linear-gradient(to bottom,transparent 5%,rgba(28,27,24,0.6) 30%,rgba(28,27,24,0.88) 70%,rgba(28,27,24,0.95) 100%);}
   .shop-text{width:100%;align-items:center;text-align:left;}
+.shop-text .sec-label{color:var(--gold-lt);}
+.shop-text .sec-h{color:var(--white);}
+.shop-text .sec-rule{background:var(--gold-lt);}
+.shop-text .body-copy{color:rgba(253,250,245,0.75);}
   .shop-text .sec-h{padding-left:0.8em;}
   .shop-text .btn-reserve{align-self:center;}
   .philosophy{padding:8vmin 5vw;}
