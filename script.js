@@ -261,7 +261,7 @@ if (newsBanner) {
         const hero = document.querySelector('.hero');
         if (hero) {
           hero.style.minHeight = 'unset';
-          hero.style.height = `${window.innerHeight - newsBanner.offsetHeight}px`;
+          hero.style.height = `calc(100vh - ${newsBanner.offsetHeight}px)`;
         }
       });
     })
