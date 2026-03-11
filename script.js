@@ -6,7 +6,7 @@ window.addEventListener('load',()=>{
     loader.classList.add('gone');
   }
   else {
-    setTimeout(()=>loader.classList.add('gone'),1400);
+    setTimeout(()=>loader.classList.add('gone'),1000);
   }
 });
 const nav=document.getElementById('nav');
