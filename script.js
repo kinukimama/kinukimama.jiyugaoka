@@ -337,8 +337,27 @@ const shopCtaBtn = document.querySelector('.shop .btn-reserve');
 if(shopCtaBtn){
   const shopCtaObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      e.target.classList.toggle('is-active', e.isIntersecting);
+      if(e.isIntersecting){
+        setTimeout(() => e.target.classList.add('is-active'), 350);
+      } else {
+        e.target.classList.remove('is-active');
+      }
     });
   },{threshold:0.8});
   shopCtaObs.observe(shopCtaBtn);
+}
+if(window.innerWidth > 767){
+  const contactCtaBtn = document.querySelector('.contact .btn-reserve');
+  if(contactCtaBtn){
+    const contactCtaObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          setTimeout(() => e.target.classList.add('is-active'), 350);
+        } else {
+          e.target.classList.remove('is-active');
+        }
+      });
+    },{threshold:0.8});
+    contactCtaObs.observe(contactCtaBtn);
+  }
 }

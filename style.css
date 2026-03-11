@@ -288,6 +288,8 @@ nav.on .burger span{background:var(--ink-mid);}
 .shop-text .btn-reserve{padding:1rem 1.6rem;font-size:0.8rem;align-self:center;}
 .shop .btn-reserve.is-active{color:var(--sage);}
 .shop .btn-reserve.is-active::before{transform:scaleX(1);}
+.contact .btn-reserve.is-active{color:var(--sage);}
+.contact .btn-reserve.is-active::before{transform:scaleX(1);}
 
 /* ── ACCESS ── */
 .access{padding:11vmin 5vw;background:var(--bg);}
