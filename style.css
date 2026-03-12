@@ -440,12 +440,12 @@ section[id],div[id]{scroll-margin-top:58px;}
 .ph-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
 .ph-line{width:28px;height:1px;background:var(--gold-lt);}
 .ph-eyebrow span{font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-lt);font-weight:300;}
-.ph-h1{font-family:'Hina Mincho',serif;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--white);letter-spacing:0.06em;line-height:1.6;margin-bottom:1rem;}
+.ph-h1{font-family:'Hina Mincho',serif;font-size:clamp(2rem,4vw,2.8rem);color:var(--white);letter-spacing:0.06em;line-height:1.6;margin-bottom:1rem;}
 .ph-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;letter-spacing:0.3em;color:rgba(201,170,124,0.5);text-transform:uppercase;}
 
 /* ── BREADCRUMB ── */
 .breadcrumb{padding:1.4rem 5vw;border-bottom:1px solid var(--bg-deep);display:flex;align-items:center;gap:0.7rem;}
-.breadcrumb a,.breadcrumb span{font-family:'Cormorant Garamond',serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--ink-soft);}
+.breadcrumb a,.breadcrumb span{font-family:'Cormorant Garamond',serif;font-size:0.88rem;letter-spacing:0.15em;color:var(--ink-soft);}
 .breadcrumb a:hover{color:var(--gold);}
 .breadcrumb .sep{color:rgba(168,137,92,0.4);}
 .breadcrumb .current{color:var(--ink-mid);}
@@ -473,7 +473,7 @@ section[id],div[id]{scroll-margin-top:58px;}
 .pol-contact-label{font-family:'Cormorant Garamond',serif;font-size:0.6rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:0.8rem;}
 .pol-contact strong{color:rgba(253,250,245,0.85);}
 .back-wrap{text-align:center;padding:4rem 0 2rem;}
-.back-btn{position:relative;display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cormorant Garamond',serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);padding-bottom:0.4rem;transition:color 0.35s;}
+.back-btn{position:relative;display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cormorant Garamond',serif;font-size:0.88rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);padding-bottom:0.4rem;transition:color 0.35s;}
 .back-btn::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:rgba(168,137,92,0.25);}
 .back-btn::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right center;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
 .back-btn:hover{color:var(--gold);}
@@ -532,7 +532,7 @@ section[id],div[id]{scroll-margin-top:58px;}
 /* ── CONTACT FORM ── */
 .cf-wrap{max-width:768px;margin:0 auto;padding:clamp(3rem,7vmin,6rem) 5vw clamp(4rem,10vmin,8rem);}
 .cf-field{margin-bottom:2.8rem;}
-.cf-label{display:block;font-family:'Cormorant Garamond',serif;font-size:0.74rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.cf-label{display:block;font-family:'Cormorant Garamond',serif;font-size:0.9rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
 .cf-req{color:rgba(168,137,92,0.5);margin-left:0.3rem;}
 .cf-input,.cf-select,.cf-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bg-deep);padding:0.7rem 0;font-family:'Shippori Mincho B1',serif;font-size:1.14rem;color:var(--ink);transition:border-color 0.3s;outline:none;-webkit-appearance:none;appearance:none;border-radius:0;}
 .cf-input::placeholder{color:rgba(92,82,72,0.25);}
@@ -545,7 +545,7 @@ section[id],div[id]{scroll-margin-top:58px;}
 .btn-submit{font-family:'Cormorant Garamond',serif;font-size:0.98rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);background:var(--gold-lt);border:none;padding:1.1rem 4rem;cursor:pointer;transition:background 0.4s ease;}
 .btn-submit:hover{background:var(--gold);}
 .cf-err{display:block;font-size:0.72rem;color:#b84c4c;margin-top:0.5rem;min-height:1rem;}
-.cf-tel-note{font-family:'Shippori Mincho B1',serif;font-size:0.65rem;color:var(--ink-soft);letter-spacing:0.05em;margin-left:0.8rem;text-transform:none;}
+.cf-tel-note{font-family:'Shippori Mincho B1',serif;font-size:0.75rem;color:var(--ink-soft);letter-spacing:0.05em;margin-left:0;margin-top:0.3rem;text-transform:none;display:block;}
 @media(max-width:767px){
 .c-btns{width:100%;}
 .c-btns-sub{gap:1.8rem;}
