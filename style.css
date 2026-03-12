@@ -456,11 +456,11 @@ section[id],div[id]{scroll-margin-top:58px;}
 .pol-section:last-child{margin-bottom:0;}
 .pol-label{font-family:'Cormorant Garamond',serif;font-size:0.62rem;letter-spacing:0.52em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.8rem;}
 .pol-h2{font-family:'Hina Mincho',serif;font-size:clamp(1.3rem,2vw,1.8rem);color:var(--sage);letter-spacing:0.04em;margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--bg-deep);}
-.pol-h3{font-size:1.1rem;color:var(--ink-mid);letter-spacing:0.05em;margin:1.6rem 0 0.6rem;font-family:'Hina Mincho',serif;}
-.pol-p{font-size:0.95rem;line-height:2.3;color:var(--ink-soft);margin-bottom:1rem;}
+.pol-h3{font-size:1.2rem;color:var(--ink-mid);letter-spacing:0.05em;margin:1.6rem 0 0.6rem;font-family:'Hina Mincho',serif;}
+.pol-p{font-size:1.1rem;line-height:2.3;color:var(--ink-soft);margin-bottom:1rem;}
 .pol-p:last-child{margin-bottom:0;}
 .pol-list{list-style:none;padding:0;margin:0.6rem 0 1rem;}
-.pol-list li{font-size:0.84rem;line-height:2.1;color:var(--ink-soft);padding-left:1.2rem;position:relative;}
+.pol-list li{font-size:1rem;line-height:2.1;color:var(--ink-soft);padding-left:1.2rem;position:relative;}
 .pol-list li::before{content:'—';position:absolute;left:0;color:var(--gold-lt);font-family:'Cormorant Garamond',serif;font-size:0.9rem;}
 .section-divider{border:none;border-top:1px solid var(--bg-deep);margin:5rem 0;position:relative;}
 .section-divider::before{content:'§';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--bg);padding:0 1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold-lt);font-weight:300;}
@@ -469,7 +469,7 @@ section[id],div[id]{scroll-margin-top:58px;}
 .pol-meta-label{font-family:'Cormorant Garamond',serif;font-size:0.58rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);font-weight:300;}
 .pol-meta-val{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--ink-mid);letter-spacing:0.1em;}
 .pol-contact{background:var(--sage);padding:2.5rem 3rem;margin-top:2rem;}
-.pol-contact p{font-size:0.82rem;line-height:2.1;color:rgba(253,250,245,0.65);}
+.pol-contact p{font-size:1rem;line-height:2.1;color:rgba(253,250,245,0.65);}
 .pol-contact-label{font-family:'Cormorant Garamond',serif;font-size:0.6rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:0.8rem;}
 .pol-contact strong{color:rgba(253,250,245,0.85);}
 .back-wrap{text-align:center;padding:4rem 0 2rem;}
