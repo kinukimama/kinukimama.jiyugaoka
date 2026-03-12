@@ -120,7 +120,7 @@ nav.on .burger span{background:var(--ink-mid);}
 
 /* ── SHARED ── */
 .sec-label{font-family:'Cormorant Garamond',serif;font-size:0.62rem;letter-spacing:0.52em;text-transform:uppercase;color:var(--gold);display:block;text-align:center;}
-.sec-h{font-family:'Hina Mincho',serif;font-size:clamp(1.3rem,2.5vw,2.4rem);line-height:1.75;letter-spacing:0.04em;text-align:center;}
+.sec-h{font-family:'Hina Mincho',serif;font-size:clamp(1.5rem,2.5vw,2.4rem);line-height:1.75;letter-spacing:0.04em;text-align:center;}
 .sec-rule{width:30px;height:1px;background:var(--gold);margin:1.8rem auto;}
 .body-copy{font-size:1rem;line-height:2.3;color:var(--ink-soft);}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.9s ease,transform 0.9s ease;}
@@ -136,7 +136,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .phil-block:last-child{border-bottom:1px solid var(--bg-deep);}
 .pb-txt{padding:5.5rem 5vw;display:flex;flex-direction:column;justify-content:center;}
 .pb-num{font-family:'Cormorant Garamond',serif;font-size:0.62rem;letter-spacing:0.52em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
-.pb-title{font-size:1rem;color:var(--sage);letter-spacing:0.05em;margin-bottom:1.2rem;}
+.pb-title{font-size:1.2rem;color:var(--sage);letter-spacing:0.05em;margin-bottom:1.2rem;}
 .pb-img{overflow:hidden;min-height:300px;}
 .pb-img img{height:100%;object-fit:cover;transition:transform 0.8s ease;}
 .phil-block:hover .pb-img img{transform:scale(1.04);}
@@ -184,7 +184,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .ac-card{background:var(--white);padding:2rem 1.8rem;position:relative;}
 .ac-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,var(--gold-lt),transparent);opacity:0;transition:opacity 0.3s;}
 .ac-card:hover::after{opacity:1;}
-.ac-card-name{font-size:1rem;color:var(--sage);margin-bottom:0.5rem;line-height:1.7;}
+.ac-card-name{font-size:1.1rem;color:var(--sage);margin-bottom:0.5rem;line-height:1.7;}
 .ac-card-price{font-family:'Cormorant Garamond',serif;font-size:1.44rem;font-weight:300;color:var(--sage);margin-bottom:0.6rem;}
 .ac-card-price small{font-size:0.64rem;font-family:'Hina Mincho',serif;color:var(--ink-soft);margin-left:0.25rem;}
 .ac-card-desc{font-size:1rem;line-height:1.9;color:var(--ink-soft);}
@@ -212,7 +212,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .flow-item::before{content:'';position:absolute;left:34px;top:5rem;height:100%;width:1px;background:linear-gradient(to bottom,rgba(168,137,92,0.3),transparent);}
 .flow-item:last-child::before{display:none;}
 .fi-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-style:italic;font-weight:300;color:var(--gold);line-height:1;text-align:center;}
-.fi-ttl{font-size:0.95rem;color:var(--sage);letter-spacing:0.05em;margin-bottom:0.8rem;}
+.fi-ttl{font-size:1.1rem;color:var(--sage);letter-spacing:0.05em;margin-bottom:0.8rem;}
 .fi-body{font-size:1rem;line-height:2.15;color:var(--ink-soft);}
 .fi-body em{font-style:normal;color:var(--gold);}
 
