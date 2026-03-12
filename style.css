@@ -506,15 +506,15 @@ section[id],div[id]{scroll-margin-top:58px;}
 .news-card{border-bottom:1px solid rgba(168,137,92,0.2);padding:2rem 0;}
 .news-card:first-child{border-top:1px solid rgba(168,137,92,0.2);}
 .news-card-head{display:flex;align-items:center;gap:1.2rem;margin-bottom:0.8rem;}
-.news-date{font-family:'Cormorant Garamond',serif;font-size:0.88rem;letter-spacing:0.1em;color:var(--ink-soft);}
-.news-tag{font-size:0.65rem;letter-spacing:0.15em;padding:0.2rem 0.7rem;border:1px solid currentColor;}
+.news-date{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.1em;color:var(--ink-soft);}
+.news-tag{font-size:0.7rem;letter-spacing:0.15em;padding:0.2rem 0.7rem;border:1px solid currentColor;}
 .news-tag--休業{color:#9b4c4c;border-color:rgba(155,76,76,0.4);background:rgba(155,76,76,0.06);}
 .news-tag--キャンペーン{color:#7a6e2e;border-color:rgba(122,110,46,0.4);background:rgba(122,110,46,0.06);}
 .news-tag--お知らせ{color:var(--sage-mid);border-color:rgba(68,92,78,0.4);background:rgba(68,92,78,0.06);}
 .news-tag--新メニュー{color:#5c6e8a;border-color:rgba(92,110,138,0.4);background:rgba(92,110,138,0.06);}
 .news-tag--その他{color:var(--ink-soft);border-color:rgba(92,82,72,0.4);background:rgba(92,82,72,0.06);}
-.news-title{font-family:'Hina Mincho',serif;font-size:1.05rem;color:var(--ink);margin-bottom:0.6rem;}
-.news-body{font-size:0.9rem;line-height:2;color:var(--ink-mid);}
+.news-title{font-family:'Hina Mincho',serif;font-size:1.1rem;color:var(--ink);margin-bottom:0.6rem;}
+.news-body{font-size:1rem;line-height:2;color:var(--ink-mid);}
 .news-card-link{display:inline-block;margin-top:0.8rem;font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.2em;color:var(--gold);border-bottom:1px solid rgba(168,137,92,0.4);padding-bottom:0.1rem;transition:all 0.3s;}
 .news-card-link:hover{color:var(--sage);border-color:var(--sage);}
 
