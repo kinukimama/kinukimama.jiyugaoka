@@ -100,7 +100,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .h-eyebrow span{font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-lt);font-weight:300;}
 .hero-h1{font-family:'Hina Mincho',serif;font-size:clamp(1.6rem,4vw,4.2rem);line-height:1.65;color:var(--white);letter-spacing:0.04em;margin-bottom:2rem;}
 .hero-h1 em{font-style:normal;color:var(--gold-lt);}
-.hero-p{font-size:clamp(0.75rem,1vw,0.85rem);line-height:2.2;color:rgba(253,250,245,0.65);max-width:420px;margin-bottom:2.5rem;}
+.hero-p{font-size:1rem;line-height:2.2;color:rgba(253,250,245,0.65);max-width:420px;margin-bottom:2.5rem;}
 .hero-link{display:inline-flex;align-items:center;gap:0.8rem;font-family:'Cormorant Garamond',serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);position:relative;padding-bottom:0.4rem;transition:color 0.35s;}
 .hero-link::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:rgba(253,250,245,0.25);}
 .hero-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold-lt);transform:scaleX(0);transform-origin:left center;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
@@ -122,7 +122,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .sec-label{font-family:'Cormorant Garamond',serif;font-size:0.62rem;letter-spacing:0.52em;text-transform:uppercase;color:var(--gold);display:block;text-align:center;}
 .sec-h{font-family:'Hina Mincho',serif;font-size:clamp(1.3rem,2.5vw,2.4rem);line-height:1.75;letter-spacing:0.04em;text-align:center;}
 .sec-rule{width:30px;height:1px;background:var(--gold);margin:1.8rem auto;}
-.body-copy{font-size:clamp(0.9rem,1.3vw,0.95rem);line-height:2.3;color:var(--ink-soft);}
+.body-copy{font-size:1rem;line-height:2.3;color:var(--ink-soft);}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.9s ease,transform 0.9s ease;}
 .reveal.vis{opacity:1;transform:none;}
 
@@ -154,12 +154,12 @@ nav.on .burger span{background:var(--ink-mid);}
 .feat-item:hover{background:rgba(201,170,124,0.06);}
 .feat-n{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-style:italic;font-weight:300;color:rgba(168,137,92,0.5);line-height:1;margin-bottom:1.4rem;}
 .feat-ttl{font-size:0.88rem;color:var(--gold-lt);letter-spacing:0.07em;margin-bottom:0.8rem;}
-.feat-body{font-size:0.9rem;line-height:2.1;color:rgba(253,250,245,0.5);}
+.feat-body{font-size:1rem;line-height:2.1;color:rgba(253,250,245,0.5);}
 
 /* ── MENU ── */
 .menu{padding:11vmin 5vw;background:var(--bg);}
 .menu-top{text-align:center;margin-bottom:5vmin;}
-.menu-intro-txt{font-size:0.9rem;line-height:2.2;color:var(--ink-soft);margin-top:2.5rem;margin-bottom:5rem;text-align:center;}
+.menu-intro-txt{font-size:1rem;line-height:2.2;color:var(--ink-soft);margin-top:2.5rem;margin-bottom:5rem;text-align:center;}
 .ac-list{display:flex;flex-direction:column;gap:2px;}
 .ac-head{display:flex;align-items:center;justify-content:space-between;padding:1.6rem 2.2rem;background:var(--white);cursor:pointer;user-select:none;border-left:2px solid transparent;transition:border-color 0.3s,background 0.25s;}
 .ac-head:hover,.ac-item.open .ac-head{background:var(--bg-warm);border-left-color:var(--gold);}
@@ -187,7 +187,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .ac-card-name{font-size:1rem;color:var(--sage);margin-bottom:0.5rem;line-height:1.7;}
 .ac-card-price{font-family:'Cormorant Garamond',serif;font-size:1.44rem;font-weight:300;color:var(--sage);margin-bottom:0.6rem;}
 .ac-card-price small{font-size:0.64rem;font-family:'Hina Mincho',serif;color:var(--ink-soft);margin-left:0.25rem;}
-.ac-card-desc{font-size:0.88rem;line-height:1.9;color:var(--ink-soft);}
+.ac-card-desc{font-size:1rem;line-height:1.9;color:var(--ink-soft);}
 .ac-card-note{font-size:0.68rem;color:var(--gold);letter-spacing:0.06em;margin-top:0.5rem;display:block;}
 .menu-note{margin-top:2.5rem;padding:1.6rem 2.4rem;background:var(--bg-warm);border-left:2px solid var(--gold);font-size:0.9rem;color:var(--ink-soft);line-height:2;}
 .menu-cta-wrap{margin-top:3rem;text-align:center;}
@@ -213,7 +213,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .flow-item:last-child::before{display:none;}
 .fi-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-style:italic;font-weight:300;color:var(--gold);line-height:1;text-align:center;}
 .fi-ttl{font-size:0.95rem;color:var(--sage);letter-spacing:0.05em;margin-bottom:0.8rem;}
-.fi-body{font-size:0.9rem;line-height:2.15;color:var(--ink-soft);}
+.fi-body{font-size:1rem;line-height:2.15;color:var(--ink-soft);}
 .fi-body em{font-style:normal;color:var(--gold);}
 
 /* ── ABOUT — asymmetric ── */
@@ -258,7 +258,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .vc{background:var(--bg);padding:2.5rem;border:1px solid var(--bg-deep);position:relative;transition:border-color 0.3s,transform 0.3s;}
 .vc:hover{border-color:var(--gold-lt);transform:translateY(-3px);}
 .vc::before{content:'"';position:absolute;right:1.5rem;top:-0.3rem;font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--bg-deep);line-height:1;font-style:italic;pointer-events:none;}
-.vc-txt{font-size:0.9rem;line-height:2.05;color:var(--ink-soft);margin-bottom:1.4rem;position:relative;z-index:1;}
+.vc-txt{font-size:1rem;line-height:2.05;color:var(--ink-soft);margin-bottom:1.4rem;position:relative;z-index:1;}
 .vc-from{font-family:'Cormorant Garamond',serif;font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;}
 .voice-disclaimer{font-size:0.72rem;color:var(--ink-soft);text-align:left;margin-top:2.5rem;letter-spacing:0.05em;}
 
@@ -311,7 +311,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .access-directions{margin-top:2.5rem;padding:2rem 2.5rem;background:var(--bg-warm);border-left:3px solid var(--gold);border-radius:2px;text-align:left;}
 .access-tbl td:last-child{text-align:center;padding-right:150px;}
 .access-dir-label{display:block;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-.access-directions p{font-size:0.88rem;line-height:2;color:var(--ink-mid);}
+.access-directions p{font-size:1rem;line-height:2;color:var(--ink-mid);}
 .access-dir-text em{font-style:normal;font-weight:500;color:var(--gold);}
 
 /* ── CONTACT ── */
@@ -319,7 +319,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .contact-inner{position:relative;z-index:1;}
 .contact .sec-label{color:var(--gold-lt);display:block;margin-bottom:0;}
 .contact .sec-h{color:var(--white);margin:1.2rem 0;}
-.contact-p{font-size:0.9rem;color:rgba(253,250,245,0.65);line-height:2.1;margin-bottom:3rem;}
+.contact-p{font-size:1rem;color:rgba(253,250,245,0.65);line-height:2.1;margin-bottom:3rem;}
 .c-btns{display:flex;flex-direction:column;align-items:center;gap:2.2rem;width:min(520px,100%);margin:0 auto;}
 .c-btns-sub{display:flex;align-items:center;gap:3rem;flex-wrap:wrap;justify-content:center;}
 .btn-reserve{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:0.7rem;padding:1.2rem 2rem 1.2rem 2.8rem;font-family:'Cormorant Garamond',serif;font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-lt);border:1px solid rgba(201,170,124,0.5);transition:color 0.4s ease;white-space:nowrap;}
