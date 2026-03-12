@@ -440,7 +440,7 @@ section[id],div[id]{scroll-margin-top:58px;}
 .ph-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
 .ph-line{width:28px;height:1px;background:var(--gold-lt);}
 .ph-eyebrow span{font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-lt);font-weight:300;}
-.ph-h1{font-family:'Hina Mincho',serif;font-size:clamp(2rem,4vw,2.8rem);color:var(--white);letter-spacing:0.06em;line-height:1.6;margin-bottom:1rem;}
+.ph-h1{font-family:'Hina Mincho',serif;font-size:clamp(1.9rem,4vw,2.8rem);color:var(--white);letter-spacing:0.06em;line-height:1.6;margin-bottom:1rem;}
 .ph-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;letter-spacing:0.3em;color:rgba(201,170,124,0.5);text-transform:uppercase;}
 
 /* ── BREADCRUMB ── */
