@@ -100,7 +100,7 @@ nav.on .burger span{background:var(--ink-mid);}
 .h-eyebrow span{font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-lt);font-weight:300;}
 .hero-h1{font-family:'Hina Mincho',serif;font-size:clamp(2.2rem,4vw,4.2rem);line-height:1.65;color:var(--white);letter-spacing:0.04em;margin-bottom:2rem;}
 .hero-h1 em{font-style:normal;color:var(--gold-lt);}
-.hero-p{font-size:1rem;line-height:2.2;color:rgba(253,250,245,0.65);max-width:420px;margin-bottom:2.5rem;}
+.hero-p{font-size:1rem;line-height:2.2;color:rgba(253,250,245,0.65);max-width:450px;margin-bottom:2.5rem;}
 .hero-link{display:inline-flex;align-items:center;gap:0.8rem;font-family:'Cormorant Garamond',serif;font-size:0.88rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);position:relative;padding-bottom:0.4rem;transition:color 0.35s;}
 .hero-link::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:rgba(253,250,245,0.25);}
 .hero-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold-lt);transform:scaleX(0);transform-origin:left center;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
