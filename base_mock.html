@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kinukimama online shop — モック v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Hina+Mincho&family=Shippori+Mincho+B1:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F4EF;
+  --bg-warm:#EDE8DF;
+  --bg-deep:#E3DBCF;
+  --bg-cream:#F5F0EA;
+  --ink:#1C1B18;
+  --ink-mid:#38332E;
+  --ink-soft:#5C5248;
+  --gold:#A8895C;
+  --gold-lt:#C9AA7C;
+  --sage:#2E3D34;
+  --sage-mid:#445C4E;
+  --white:#FDFAF5;
+  --rust:#C0614A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Shippori Mincho B1',serif;background:var(--white);color:var(--ink);font-size:16px;line-height:1.7}
+
+/* ── MOCK BAR ── */
+.mock-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);display:flex;z-index:9999}
+.mock-bar button{flex:1;padding:13px 8px;background:none;border:none;color:rgba(255,255,255,0.45);font-family:'Shippori Mincho B1',serif;font-size:12px;cursor:pointer;letter-spacing:0.1em;transition:color 0.2s,background 0.2s;border-right:1px solid rgba(255,255,255,0.08)}
+.mock-bar button.active{color:var(--gold-lt);background:rgba(201,170,124,0.1)}
+.mock-bar button:hover{color:var(--white)}
+.mock-label{position:fixed;top:0;left:0;right:0;background:var(--sage);color:var(--gold-lt);font-size:10px;letter-spacing:0.2em;text-align:center;padding:5px;z-index:9998;font-family:'Shippori Mincho B1',serif}
+.page{display:none;padding-top:20px}
+.page.active{display:block}
+
+/* ── HEADER ── */
+header{background:var(--white);border-bottom:1px solid rgba(28,27,24,0.1);position:sticky;top:20px;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 5vw;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Hina Mincho',serif;font-size:1.1rem;letter-spacing:0.24em;color:var(--ink);text-decoration:none}
+.logo-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;color:var(--gold);letter-spacing:0.18em;display:block;margin-top:-3px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:12px;letter-spacing:0.16em;color:var(--ink-soft);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--gold)}
+.cart-btn{display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.12em;color:var(--ink-soft);cursor:pointer;border:1px solid rgba(28,27,24,0.2);padding:6px 14px;transition:border-color 0.2s,color 0.2s}
+.cart-btn:hover{border-color:var(--gold);color:var(--gold)}
+.cart-btn svg{width:16px;height:16px}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;height:90vh;min-height:560px;overflow:hidden;background:var(--bg-cream)}
+.hero-img-mock{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.hero-bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%, #F5F0EA 30%, #E8E0D4 100%)}
+.hero-silk-hint{position:absolute;bottom:0;right:0;width:55%;height:70%;background:linear-gradient(135deg,transparent 30%,rgba(232,224,212,0.6) 100%);border-radius:80% 0 0 0}
+.hero-product-ph{position:absolute;left:50%;top:50%;transform:translate(-40%,-50%);text-align:center}
+.hero-product-ph .ph-frame{width:220px;height:340px;border:1px solid rgba(201,170,124,0.3);display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(253,250,245,0.4);backdrop-filter:blur(2px)}
+.hero-product-ph .ph-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--gold-lt);letter-spacing:0.1em}
+.hero-product-ph .ph-note{font-size:10px;letter-spacing:0.16em;color:var(--ink-soft);margin-top:6px}
+.hero-text{position:absolute;left:8vw;top:50%;transform:translateY(-50%)}
+.hero-text .catch-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.4rem,5vw,4rem);line-height:1.15;color:var(--ink);letter-spacing:0.02em;display:block}
+.hero-text .catch-ja{font-family:'Hina Mincho',serif;font-size:clamp(0.85rem,1.2vw,1rem);color:var(--ink-soft);letter-spacing:0.22em;display:block;margin-top:14px}
+.hero-text .rule{width:28px;height:1px;background:var(--gold);margin:18px 0}
+.hero-text .hero-link{font-size:12px;letter-spacing:0.2em;color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:10px;position:relative}
+.hero-text .hero-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold-lt);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.hero-text .hero-link:hover::after{transform:scaleX(1)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:0.2em;color:var(--ink-soft)}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold-lt),transparent);animation:scrollDown 1.6s ease-in-out infinite}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── SECTION COMMON ── */
+.sec-wrap{max-width:1100px;margin:0 auto;padding:0 5vw}
+.sec-header{text-align:center;margin-bottom:48px}
+.sec-header .sec-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--ink);letter-spacing:0.06em;display:block}
+.sec-header .sec-ja{font-size:13px;letter-spacing:0.22em;color:var(--ink-soft);margin-top:6px;display:block}
+.sec-header .rule{width:24px;height:1px;background:var(--gold);margin:14px auto 0}
+
+/* ── PICKUP ── */
+.pickup{padding:80px 0;background:var(--white)}
+.pickup-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.pickup-item{position:relative;overflow:hidden;cursor:pointer}
+.pickup-item:first-child{grid-row:span 2}
+.pickup-img{aspect-ratio:4/5;background:var(--bg-cream);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.pickup-item:first-child .pickup-img{aspect-ratio:auto;height:100%}
+.pickup-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:transform 0.6s ease}
+.pickup-item:hover .pickup-img-inner{transform:scale(1.03)}
+.pickup-ph-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.5rem;color:var(--gold-lt);opacity:0.5}
+.pickup-ph-note{font-size:10px;letter-spacing:0.16em;color:var(--ink-soft);margin-top:6px;border:1px solid rgba(201,170,124,0.4);padding:3px 10px}
+.pickup-caption{padding:18px 20px 22px;background:var(--white)}
+.pickup-caption .cap-label{font-size:10px;letter-spacing:0.2em;color:var(--gold);margin-bottom:6px;display:block}
+.pickup-caption h3{font-family:'Hina Mincho',serif;font-size:1.05rem;letter-spacing:0.14em;color:var(--ink);margin-bottom:8px}
+.pickup-caption p{font-size:13px;color:var(--ink-soft);line-height:1.8}
+.pickup-caption .more{font-size:11px;letter-spacing:0.18em;color:var(--gold);margin-top:10px;display:inline-block}
+
+/* ── PRODUCTS ── */
+.products{padding:80px 0;background:var(--bg)}
+.cat-tabs{display:flex;gap:0;justify-content:center;margin-bottom:48px;border-bottom:1px solid rgba(28,27,24,0.1)}
+.cat-tab{background:none;border:none;border-bottom:2px solid transparent;padding:12px 24px 10px;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:0.16em;color:var(--ink-soft);cursor:pointer;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s}
+.cat-tab.active,.cat-tab:hover{color:var(--ink);border-bottom-color:var(--gold)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
+.product-card{cursor:pointer;background:var(--white)}
+.prod-img{aspect-ratio:1/1;background:var(--bg-cream);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.prod-img-inner{display:flex;align-items:center;justify-content:center;flex-direction:column;width:100%;height:100%;transition:transform 0.5s ease}
+.product-card:hover .prod-img-inner{transform:scale(1.04)}
+.prod-badge{position:absolute;top:0;left:0;background:var(--sage);color:var(--gold-lt);font-size:9px;letter-spacing:0.14em;padding:4px 10px;font-family:'Shippori Mincho B1',serif}
+.prod-ph-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;color:var(--gold-lt);opacity:0.45}
+.prod-ph-ja{font-size:9px;letter-spacing:0.12em;color:var(--ink-soft);margin-top:4px}
+.prod-info{padding:14px 12px 16px}
+.prod-name{font-size:13px;letter-spacing:0.05em;color:var(--ink);line-height:1.55}
+.prod-price{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink-mid);margin-top:7px;letter-spacing:0.05em}
+.prod-price small{font-size:0.7rem;font-family:'Shippori Mincho B1',serif;color:var(--ink-soft)}
+.more-wrap{text-align:center;margin-top:48px}
+.btn-more{display:inline-block;padding:13px 48px;border:1px solid var(--ink-mid);font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:0.2em;color:var(--ink-mid);text-decoration:none;position:relative;overflow:hidden;cursor:pointer;background:none}
+.btn-more::before{content:'';position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease}
+.btn-more:hover::before{transform:scaleX(1)}
+.btn-more span{position:relative;z-index:1;transition:color 0.3s}
+.btn-more:hover span{color:var(--white)}
+
+/* ── SILK STRIP ── */
+.silk-strip{background:var(--sage);padding:56px 5vw;text-align:center}
+.silk-strip p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.6rem);color:rgba(201,170,124,0.8);letter-spacing:0.08em;line-height:1.6}
+.silk-strip .strip-ja{font-family:'Hina Mincho',serif;font-style:normal;font-size:0.8rem;color:rgba(253,250,245,0.45);letter-spacing:0.22em;margin-top:10px;display:block}
+
+/* ── ABOUT STRIP ── */
+.about-strip{padding:80px 0;background:var(--bg-warm)}
+.about-inner{max-width:900px;margin:0 auto;padding:0 5vw;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img-ph{aspect-ratio:4/5;background:var(--bg-cream);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.about-img-ph .ph-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--gold-lt);opacity:0.4}
+.about-img-ph .ph-note{font-size:10px;letter-spacing:0.16em;color:var(--ink-soft)}
+.about-text .sec-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;color:var(--ink);display:block;margin-bottom:6px}
+.about-text .sec-ja{font-size:12px;letter-spacing:0.22em;color:var(--gold);display:block;margin-bottom:20px}
+.about-text .rule{width:24px;height:1px;background:var(--gold);margin-bottom:20px}
+.about-text p{font-size:14px;color:var(--ink-mid);line-height:2;margin-bottom:24px}
+.btn-ghost{font-size:12px;letter-spacing:0.2em;color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:10px;position:relative}
+.btn-ghost::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold-lt);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.btn-ghost:hover::after{transform:scaleX(1)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:56px 5vw 80px}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start}
+.footer-logo{font-family:'Hina Mincho',serif;font-size:1.1rem;letter-spacing:0.24em;color:var(--white);margin-bottom:4px}
+.footer-logo-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;color:var(--gold-lt);letter-spacing:0.18em}
+.footer-desc{font-size:12px;color:rgba(253,250,245,0.4);letter-spacing:0.1em;margin-top:14px;line-height:2}
+.footer-links{display:flex;flex-direction:column;gap:12px;text-align:right}
+.footer-links a{font-size:12px;letter-spacing:0.12em;color:rgba(253,250,245,0.4);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold-lt)}
+.footer-bottom{max-width:1100px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(253,250,245,0.08);text-align:center;font-size:11px;letter-spacing:0.1em;color:rgba(253,250,245,0.25)}
+
+/* ── DETAIL PAGE ── */
+.detail-wrap{max-width:1060px;margin:0 auto;padding:40px 5vw 120px}
+.breadcrumb{font-size:12px;letter-spacing:0.12em;color:var(--ink-soft);margin-bottom:40px;display:flex;gap:8px;align-items:center}
+.breadcrumb a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.breadcrumb a:hover{border-bottom-color:var(--gold)}
+.breadcrumb span{opacity:0.3}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.detail-img-main{background:var(--bg-cream);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}
+.detail-img-main .ph-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:3rem;color:var(--gold-lt);opacity:0.4}
+.detail-img-main .ph-note{font-size:11px;letter-spacing:0.18em;color:var(--ink-soft)}
+.detail-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.detail-thumb{background:var(--bg-warm);aspect-ratio:1/1;border:1px solid transparent;cursor:pointer;transition:border-color 0.2s}
+.detail-thumb.active{border-color:var(--gold)}
+.detail-cat{font-size:11px;letter-spacing:0.2em;color:var(--gold);padding-bottom:16px;border-bottom:1px solid rgba(28,27,24,0.1);margin-bottom:20px}
+.detail-name{font-family:'Hina Mincho',serif;font-size:clamp(1.15rem,2vw,1.45rem);letter-spacing:0.12em;color:var(--ink);line-height:1.65;margin-bottom:20px}
+.detail-price{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ink);letter-spacing:0.04em}
+.detail-price small{font-size:0.85rem;font-family:'Shippori Mincho B1',serif;color:var(--ink-soft)}
+.detail-tax{font-size:12px;color:var(--ink-soft);letter-spacing:0.1em;margin-top:4px;margin-bottom:28px}
+.detail-desc{font-size:14px;line-height:2;color:var(--ink-mid);padding:20px 0;border-top:1px solid rgba(28,27,24,0.08);border-bottom:1px solid rgba(28,27,24,0.08);margin-bottom:28px}
+.btn-cart{display:block;width:100%;padding:16px;background:var(--sage);color:var(--white);text-align:center;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:0.22em;border:none;cursor:pointer;margin-bottom:10px;position:relative;overflow:hidden}
+.btn-cart::before{content:'';position:absolute;inset:0;background:var(--sage-mid);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.btn-cart:hover::before{transform:scaleX(1)}
+.btn-cart span{position:relative;z-index:1}
+.btn-fav{display:block;width:100%;padding:13px;background:none;border:1px solid rgba(28,27,24,0.25);color:var(--ink-soft);text-align:center;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:0.18em;cursor:pointer;transition:border-color 0.2s,color 0.2s}
+.btn-fav:hover{border-color:var(--gold);color:var(--gold)}
+.detail-note{margin-top:24px;font-size:12px;color:var(--ink-soft);letter-spacing:0.1em;line-height:2.2;padding-top:20px;border-top:1px solid rgba(28,27,24,0.08)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:767px){
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:16px 12px}
+  .pickup-grid{grid-template-columns:1fr}
+  .pickup-item:first-child{grid-row:auto}
+  .about-inner{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr;gap:32px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-links{text-align:left}
+  .hero-text{left:5vw}
+  .nav-links .nav-link{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="mock-label">🎨 デザインモック v2 — 下のバーでページを切り替えてください</div>
+
+<!-- ═══════════════ PAGE: TOP ═══════════════ -->
+<div class="page active" id="page-top">
+
+  <header>
+    <div class="nav-inner">
+      <a class="logo" href="#">
+        kinukimama
+        <span class="logo-sub">online shop</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">ご利用ガイド</a>
+        <a class="nav-link" href="#">お知らせ</a>
+        <div class="cart-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          カート (0)
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img-mock">
+      <div class="hero-bg-grad"></div>
+      <div class="hero-silk-hint"></div>
+
+      <!-- 写真プレースホルダー -->
+      <div class="hero-product-ph">
+        <div class="ph-frame">
+          <span class="ph-en">Silk</span>
+          <span class="ph-note">ヒーロー写真（撮影予定）</span>
+        </div>
+      </div>
+
+      <!-- テキスト -->
+      <div class="hero-text">
+        <span class="catch-en">Silk,<br>for your skin.</span>
+        <span class="catch-ja">繭から生まれた、絹のスキンケア</span>
+        <div class="rule"></div>
+        <a class="hero-link" href="#">
+          商品を見る
+          <svg width="28" height="8" viewBox="0 0 28 8" fill="none"><line x1="0" y1="4" x2="24" y2="4" stroke="#A8895C" stroke-width="1"/><polyline points="20,1 24,4 20,7" stroke="#A8895C" stroke-width="1" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      scroll
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- PICK UP -->
+  <section class="pickup">
+    <div class="sec-wrap">
+      <div class="sec-header">
+        <span class="sec-en">Pick Up</span>
+        <span class="sec-ja">おすすめ・特集</span>
+        <div class="rule"></div>
+      </div>
+      <div class="pickup-grid">
+        <!-- メイン特集 -->
+        <div class="pickup-item">
+          <div class="pickup-img" style="height:100%;min-height:460px">
+            <div class="pickup-img-inner">
+              <span class="pickup-ph-en">Skincare</span>
+              <span class="pickup-ph-note">特集写真（撮影予定）</span>
+            </div>
+          </div>
+          <div class="pickup-caption">
+            <span class="cap-label">FEATURE</span>
+            <h3>絹セリシンのスキンケア</h3>
+            <p>京都丹後の繭から生まれた天然保湿成分・絹セリシン。kinukimamaサロンでもお客様のお肌に使ってきた、本当に良いと感じたシリーズをお届けします。</p>
+            <span class="more">VIEW MORE →</span>
+          </div>
+        </div>
+        <!-- サブ特集 2つ -->
+        <div class="pickup-item">
+          <div class="pickup-img">
+            <div class="pickup-img-inner">
+              <span class="pickup-ph-en">Gift</span>
+              <span class="pickup-ph-note">特集写真（撮影予定）</span>
+            </div>
+          </div>
+          <div class="pickup-caption">
+            <span class="cap-label">GIFT</span>
+            <h3>贈りものに、絹を。</h3>
+            <p>大切な方へのギフトにも。丁寧に仕立てたセットをご用意しています。</p>
+            <span class="more">VIEW MORE →</span>
+          </div>
+        </div>
+        <div class="pickup-item">
+          <div class="pickup-img">
+            <div class="pickup-img-inner">
+              <span class="pickup-ph-en">Bath</span>
+              <span class="pickup-ph-note">特集写真（撮影予定）</span>
+            </div>
+          </div>
+          <div class="pickup-caption">
+            <span class="cap-label">DAILY CARE</span>
+            <h3>お風呂から始まる絹習慣</h3>
+            <p>毎日のバスタイムに絹エキスを。まゆシリーズで、肌をやさしく整えます。</p>
+            <span class="more">VIEW MORE →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+    <div class="sec-wrap">
+      <div class="sec-header">
+        <span class="sec-en">Products</span>
+        <span class="sec-ja">商品一覧</span>
+        <div class="rule"></div>
+      </div>
+      <div style="text-align:center;margin-bottom:40px">
+        <div class="cat-tabs">
+          <button class="cat-tab active" onclick="filterCat('all',this)">すべて</button>
+          <button class="cat-tab" onclick="filterCat('kinu',this)">きぬもよふ</button>
+          <button class="cat-tab" onclick="filterCat('mayu',this)">まゆシリーズ</button>
+          <button class="cat-tab" onclick="filterCat('set',this)">セット・ギフト</button>
+          <button class="cat-tab" onclick="filterCat('mask',this)">シルクマスク</button>
+        </div>
+      </div>
+      <div class="product-grid" id="product-grid">
+
+        <div class="product-card" data-cat="kinu" onclick="goDetail()">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Set</span>
+              <span class="prod-ph-ja">スキンケアセット</span>
+            </div>
+            <div class="prod-badge">おすすめ</div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">スキンケアセット</p>
+            <p class="prod-price">¥11,330 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu" onclick="goDetail()">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Cleanse</span>
+              <span class="prod-ph-ja">クレンジングジェル</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ クレンジングジェル</p>
+            <p class="prod-price">¥2,200 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Soap</span>
+              <span class="prod-ph-ja">スキンソープ</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ スキンソープ</p>
+            <p class="prod-price">¥1,980 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Lotion</span>
+              <span class="prod-ph-ja">スキンローション</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ スキンローション</p>
+            <p class="prod-price">¥3,300 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Cream</span>
+              <span class="prod-ph-ja">スキンクリーム</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ スキンクリーム</p>
+            <p class="prod-price">¥3,850 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">UV</span>
+              <span class="prod-ph-ja">UVクリーム</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ UVクリーム</p>
+            <p class="prod-price">¥2,640 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Hand</span>
+              <span class="prod-ph-ja">ハンドクリーム</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ ハンドクリーム</p>
+            <p class="prod-price">¥1,320 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="kinu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Moisture</span>
+              <span class="prod-ph-ja">まゆの保湿液</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">きぬもよふ まゆの保湿液</p>
+            <p class="prod-price">¥5,500 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mayu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Bath</span>
+              <span class="prod-ph-ja">まゆのお風呂</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆのお風呂 ボトル</p>
+            <p class="prod-price">¥1,650 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mayu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Shampoo</span>
+              <span class="prod-ph-ja">まゆのシャンプー</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆのシャンプー</p>
+            <p class="prod-price">¥1,760 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mayu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Cond.</span>
+              <span class="prod-ph-ja">まゆのコンディショナー</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆのコンディショナー</p>
+            <p class="prod-price">¥1,760 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mayu">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Soap</span>
+              <span class="prod-ph-ja">まゆの石けん</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆの石けん</p>
+            <p class="prod-price">¥880 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="set">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Gift</span>
+              <span class="prod-ph-ja">ギフトセット</span>
+            </div>
+            <div class="prod-badge">おすすめ</div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆのお風呂ギフトセット【ボトル・詰替】</p>
+            <p class="prod-price">¥3,080 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="set">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Gift</span>
+              <span class="prod-ph-ja">シャンプーセット</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">まゆのお風呂ギフトセット【シャンプー・コンディショナー】</p>
+            <p class="prod-price">¥3,520 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mask">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Mask</span>
+              <span class="prod-ph-ja">シルクマスク</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">うるおい織りなすシルクマスク</p>
+            <p class="prod-price">¥330 <small>（税込）</small></p>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="mask">
+          <div class="prod-img">
+            <div class="prod-img-inner">
+              <span class="prod-ph-en">Mask</span>
+              <span class="prod-ph-ja">シルクマスク 10枚</span>
+            </div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-name">うるおい織りなすシルクマスク 10枚セット</p>
+            <p class="prod-price">¥3,300 <small>（税込）</small></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="more-wrap">
+        <button class="btn-more"><span>すべての商品を見る</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SILK STRIP -->
+  <div class="silk-strip">
+    <p>"Silk heals what words cannot reach."</p>
+    <span class="strip-ja">言葉では届かない場所まで、絹は届く。</span>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div class="about-inner">
+      <div class="about-img-ph">
+        <span class="ph-en">kinukimama</span>
+        <span class="ph-note">サロン写真（撮影予定）</span>
+      </div>
+      <div class="about-text">
+        <span class="sec-en">About</span>
+        <span class="sec-ja">ショップについて</span>
+        <div class="rule"></div>
+        <p>自由が丘の女性専用リラクゼーションサロン「kinukimama」が選んだ、本当に良いと感じた絹セリシンスキンケアをお届けするオンラインショップです。</p>
+        <p>サロンで実際にお客様のお肌に触れてきた経験が、すべての商品選定の根拠になっています。</p>
+        <a class="btn-ghost" href="#">
+          詳しく見る
+          <svg width="28" height="8" viewBox="0 0 28 8" fill="none"><line x1="0" y1="4" x2="24" y2="4" stroke="#A8895C" stroke-width="1"/><polyline points="20,1 24,4 20,7" stroke="#A8895C" stroke-width="1" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">kinukimama</div>
+        <div class="footer-logo-sub">online shop</div>
+        <p class="footer-desc">自由が丘の女性専用サロンが選んだ<br>絹セリシンスキンケア</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#">ショップについて</a>
+        <a href="#">ご利用ガイド</a>
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">お問い合わせ</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">© kinukimama online shop All Rights Reserved.</p>
+  </footer>
+
+</div><!-- /page-top -->
+
+
+<!-- ═══════════════ PAGE: 商品詳細 ═══════════════ -->
+<div class="page" id="page-detail">
+
+  <header>
+    <div class="nav-inner">
+      <a class="logo" href="#">kinukimama <span class="logo-sub">online shop</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">ご利用ガイド</a>
+        <div class="cart-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          カート (0)
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="detail-wrap">
+    <div class="breadcrumb">
+      <a href="#">TOP</a><span>/</span>
+      <a href="#">きぬもよふシリーズ</a><span>/</span>
+      クレンジングジェル
+    </div>
+
+    <div class="detail-grid">
+      <div>
+        <div class="detail-img-main">
+          <span class="ph-en">Cleanse</span>
+          <span class="ph-note">商品写真（撮影予定）</span>
+        </div>
+        <div class="detail-thumbs">
+          <div class="detail-thumb active"></div>
+          <div class="detail-thumb"></div>
+          <div class="detail-thumb"></div>
+          <div class="detail-thumb"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="detail-cat">きぬもよふシリーズ</p>
+        <h1 class="detail-name">きぬもよふ クレンジングジェル</h1>
+        <p class="detail-price">¥2,200 <small>（税込）</small></p>
+        <p class="detail-tax">※送料は別途かかります</p>
+
+        <div class="detail-desc">
+          <p>【保湿力さらにUP!】</p>
+          <p style="margin-top:10px">「天然保湿成分セリシン」以外に十種の保湿成分を配合し、保湿力をさらに強化。メイクや汚れをやさしくオフしながら、うるおいを逃しません。</p>
+          <p style="margin-top:10px;font-size:13px;color:#5C5248">内容量：200mL</p>
+        </div>
+
+        <button class="btn-cart"><span>カートに入れる</span></button>
+        <button class="btn-fav">♡　お気に入りに追加</button>
+        <div class="detail-note">
+          ◎ ¥5,500以上のご購入で送料無料<br>
+          ◎ クレジットカード・コンビニ払い・銀行振込対応
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">kinukimama</div>
+        <div class="footer-logo-sub">online shop</div>
+      </div>
+      <nav class="footer-links">
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">© kinukimama online shop All Rights Reserved.</p>
+  </footer>
+
+</div><!-- /page-detail -->
+
+
+<!-- ── PAGE SWITCHER ── -->
+<div class="mock-bar">
+  <button class="active" onclick="showPage('top',this)">TOP（商品一覧）</button>
+  <button onclick="showPage('detail',this)">商品詳細</button>
+</div>
+
+<script>
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mock-bar button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+function filterCat(cat,btn){
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card=>{
+    card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
+  });
+}
+function goDetail(){
+  const btn=document.querySelector('.mock-bar button:nth-child(2)');
+  showPage('detail',btn);
+}
+</script>
+
+</body>
+</html>
