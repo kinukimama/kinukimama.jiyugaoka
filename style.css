@@ -76,6 +76,11 @@ nav.on .burger span{background:var(--ink-mid);}
 @keyframes arrow-loop-cta{0%{transform:translateX(0);opacity:1;}40%{transform:translateX(110%);opacity:0;}41%{transform:translateX(-110%);opacity:0;}100%{transform:translateX(0);opacity:1;}}
 .drawer-overlay{display:block;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:245;opacity:0;pointer-events:none;transition:opacity 0.38s;}
 .drawer-overlay.open{opacity:1;pointer-events:auto;}
+@media(max-height:700px){
+  .drawer-links{margin-top:1.2rem;margin-bottom:1rem;}
+  .drawer-links a{padding:0.6rem 0.2rem;}
+  .nav-drawer{padding-bottom:1.5rem;}
+}
 
 /* ── HERO ── */
 .hero{height:100vh;min-height:700px;position:relative;overflow:hidden;}
@@ -431,6 +436,9 @@ section[id],div[id]{scroll-margin-top:58px;}
 .page-hero--contact::before{content:'Contact';}
 .page-hero--thanks::before{content:'Thanks';}
 .page-hero--404::before{content:'404';}
+.page-hero--facial::before{content:'Facial';}
+.page-hero--bodycare::before{content:'Body Care';}
+.page-hero--faq::before{content:'FAQ';}
 .ph-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
 .ph-line{width:28px;height:1px;background:var(--gold-lt);}
 .ph-eyebrow span{font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-lt);font-weight:300;}
