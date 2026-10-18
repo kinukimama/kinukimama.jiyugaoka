@@ -133,15 +133,6 @@ document.querySelectorAll('.ac-head').forEach(head => {
   });
 });
 
-// MAP FACADE
-const mapFacade = document.getElementById('mapFacade');
-if (mapFacade) {
-  mapFacade.addEventListener('click', () => {
-    mapFacade.style.display = 'none';
-    document.getElementById('mapIframeWrap').style.display = 'block';
-  });
-}
-
 // CONTACT FORM VALIDATION
 const cfForm = document.getElementById('cf-form');
 if (cfForm) {
