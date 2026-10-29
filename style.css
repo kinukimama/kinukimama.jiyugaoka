@@ -200,6 +200,12 @@ nav.on .burger span{background:var(--ink-mid);}
 .menu-cta-wrap .hero-link::before{background:rgba(168,137,92,0.25);}
 .menu-cta-wrap .hero-link::after{background:var(--gold);}
 .menu-cta-wrap .hero-link:hover{color:var(--gold);}
+.ac-more{margin-top:0;padding:1.4rem 1.8rem;text-align:right;border-top:1px solid var(--bg-deep);}
+.pb-link{margin-top:2rem;text-align:left;}
+.cta-pair{display:flex;justify-content:center;flex-wrap:wrap;gap:1.6rem 3rem;}
+@media(max-width:767px){
+  .ac-more{padding:1.2rem 1rem;text-align:center;}
+}
 
 /* ── FULL-BLEED IMAGE BREAK ── */
 .img-break{height:55vmin;overflow:hidden;position:relative;}
